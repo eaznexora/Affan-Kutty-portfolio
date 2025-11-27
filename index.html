@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Master Affan Kutty | Eaz Nexora</title>
+    <!-- Using Font Awesome for Hamburger Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* --- GLOBAL RESET & FONTS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #242732;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 95px;
+}
+
+/* Background Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("Images/pattern.png") repeat;
+    background-size: 600px;
+    opacity: 0.01;    
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* --- NAVIGATION (HAMBURGER ADDED) --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    padding: 10px;
+}
+
+.site-header.header-hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+}
+
+.nav-glass {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1391px;
+    height: 75px;
+    margin: 0 auto;
+    background: rgba(50, 56, 68, 0.65);
+    backdrop-filter: blur(40px);          
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: relative;
+}
+
+/* Desktop Nav */
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-link {
+    font-size: 15px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: all 0.2s ease;
+}
+
+.nav-link.active {
+    background: #515B67;
+    border-radius: 7px;
+}
+
+/* Hamburger Styles */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(36, 39, 50, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.hero-card {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    background: #171D2B;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(18, 27, 40, 0.54);
+    border-radius: 25px;
+    overflow: visible; /* Important for floating cubes to stick out */
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-content {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-left {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.hero-sub {
+    font-size: 16px;
+    line-height: 26px;
+    color: #CCCCCC;
+}
+
+.hero-right {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image-frame {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 6.6px 2px rgba(0, 0, 0, 0.43);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    background: #171D2B;
+}
+
+.hero-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Decorative Bars */
+.hero-color-bars { position: absolute; display: flex; gap: 6px; z-index: 1; }
+.hero-color-bars .bar { width: 25px; height: 5px; border-radius: 2px; }
+.hero-bars-top { top: 20px; left: 20px; }
+.hero-bars-bottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
+
+.bar-yellow { background: #F2E149; }
+.bar-green  { background: #4E9A5A; }
+.bar-red    { background: #ED3E3B; }
+.bar-white  { background: #FFFFFF; }
+.bar-blue   { background: #0046AD; }
+.bar-orange { background: #FF5800; }
+
+/* --- HOME FLOATING CUBES (CORRECTED) --- */
+
+/* 1. Bottom Left Colored Cube */
+.hero-cube-bottom {
+    position: absolute;
+    bottom: -30px;
+    left: -15px;
+    width: 80px; /* Mobile size */
+    animation: cubeFloat 4s ease-in-out infinite;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 2. Top Right Big White Cube */
+.hero-cube-top-right {
+    position: absolute;
+    animation: cubeFloat 4s ease-in-out infinite;
+    top: -40px;
+    right: -30px;
+    width: 150px; /* Mobile size */
+    opacity: 1; 
+    transform: rotate(20deg);
+    pointer-events: none;
+    z-index: 10;
+}
+
+
+/* --- HIGHLIGHTS --- */
+.hero-highlights {
+    width: 100%;
+    max-width: 1241px;
+    margin: 40px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.highlight-box {
+    width: 100%;
+    min-height: 100px;
+    background: #2B2E3B;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    transition: transform 0.25s ease;
+}
+
+.highlight-icon { width: 50px; height: 50px; flex-shrink: 0; }
+.highlight-text { font-size: 14px !important; color: #FFFFFF !important; text-transform: uppercase; }
+
+/* --- ABOUT SECTION (CORRECTED CUBES) --- */
+.about-section { margin: 60px auto; padding: 0 15px; max-width: 1280px; }
+.about-card {
+    position: relative; width: 100%; background: #2B2E3B;
+    border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 15px; 
+    overflow: visible; /* Allows cubes to float out */
+}
+.about-inner {
+    position: relative; z-index: 2; padding: 40px 30px; display: flex; flex-direction: column; gap: 40px;
+}
+.about-text { width: 100%; color: #FFFFFF; }
+.about-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 32px; line-height: 1.2; margin-bottom: 20px; }
+.about-text p { font-size: 16px; line-height: 26px; margin-bottom: 15px; color: #cfcfcf; }
+.about-image { width: 100%; display: flex; justify-content: center; }
+.about-image img { width: 100%; max-width: 300px; height: auto; }
+
+/* About Floating Images */
+.about-float-img {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.1; /* Subtle opacity as per design usually, or 1 if desired */
+}
+
+/* About Cube Top Right */
+.about-cube-tr {
+    top: -30px;
+    right: -20px;
+    width: 140px;
+    transform: rotate(15deg);
+}
+
+/* About Cube Bottom Left */
+.about-cube-bl {
+    bottom: -30px;
+    left: -20px;
+    width: 120px;
+    transform: rotate(-15deg);
+}
+
+
+/* --- RECORDS SECTION (ANIMATIONS) --- */
+.records-section { position: relative; padding: 60px 15px; height: auto; overflow-x: hidden; }
+.records-pinned {
+    position: relative; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+.records-figure { width: 100%; display: flex; justify-content: center; z-index: 1; }
+.records-figure img { max-width: 100%; height: auto; }
+.records-cards { position: relative; width: 100%; display: flex; flex-direction: column; gap: 25px; pointer-events: auto; }
+
+/* Mobile Side Animation Classes */
+.record-card {
+    position: relative; width: 100%; background: rgba(153, 153, 153, 0.9); border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.8); padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    opacity: 0; 
+    transition: all 0.8s ease-out;
+}
+
+/* Odd cards enter from Left */
+.record-card:nth-child(odd) {
+    transform: translateX(-100px);
+}
+
+/* Even cards enter from Right */
+.record-card:nth-child(even) {
+    transform: translateX(100px);
+}
+
+/* Active State for Mobile */
+.record-card.mobile-visible {
+    opacity: 1;
+    transform: translateX(0) !important;
+}
+
+.record-card h3 { margin: 0 0 6px; font-size: 18px; font-weight: 600; color: #fff; }
+.record-card p { margin: 0; font-size: 14px; line-height: 1.4; color: #fff; }
+
+
+/* --- GALLERY (4 CARDS) --- */
+.moments-section { max-width: 1280px; margin: 80px auto; padding: 0 15px; text-align: center; }
+.moments-title { font-size: 32px; line-height: 1.2; margin-bottom: 10px; color: white; }
+.moments-subtitle { font-size: 16px; margin-bottom: 40px; color: #ccc; }
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-items: center;
+}
+
+.moment-card { width: 100%; max-width: 350px; }
+.moment-frame {
+    width: 100%; aspect-ratio: 1/1; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.34);
+    border: 1px solid rgba(255, 255, 255, 0.39);
+    backdrop-filter: blur(130.3px);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s ease;
+}
+.moment-frame-inner { width: 85%; height: 85%; overflow: hidden; border-radius: 5px; }
+.moment-image { width: 100%; height: 100%; object-fit: cover; }
+.moment-caption { margin-top: 20px; font-size: 16px; color: white; }
+.moment-card:hover .moment-frame { transform: translateY(-10px); background: rgba(255,255,255,0.5); }
+
+
+/* --- TESTIMONIAL --- */
+.testimonial {
+    max-width: 1280px; margin: 60px 15px; background: #1C1E27; border-radius: 15px;
+    padding: 40px 30px; display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.testimonial-image { width: 150px; height: 150px; margin-bottom: 20px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.testimonial-image img { width: 100%; height: 100%; object-fit: cover; }
+.testimonial-text { font-family: 'Times New Roman', serif; font-weight: 700; font-size: 20px; color: white; }
+.testimonial-author { margin-top: 20px; font-family: 'Times New Roman', serif; font-size: 18px; color: white; }
+
+/* --- CTA --- */
+.cta-strip { margin: 60px 15px; }
+.cta-inner {
+    background: #68B1DA; border-radius: 16px; padding: 30px 20px;
+    display: flex; flex-direction: column; gap: 20px; text-align: center;
+}
+.cta-text { font-size: 20px; font-weight: 500; color: #000; }
+.cta-button {
+    background: #2B2E3B; color: white; border: none; border-radius: 34px;
+    width: 100%; height: 48px; font-size: 20px; cursor: pointer;
+}
+
+/* --- FOOTER --- */
+.site-footer { background: #161E2B; padding: 40px 20px; color: white; }
+.footer-top { display: flex; flex-direction: column; text-align: center; gap: 10px; }
+.footer-heading { font-size: 24px; font-weight: 700; }
+.footer-divider { border-bottom: 2px solid #616C7E; margin: 20px 0; }
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+}
+
+.footer-col h3 { font-size: 20px; margin-bottom: 15px; color: white;}
+.footer-col ul { list-style: none; }
+.footer-col li { color: #C2C2C2; margin-bottom: 8px; font-size: 14px; cursor: pointer;}
+.footer-col li:hover { color: white; }
+
+.contact-line { display: flex; justify-content: center; gap: 10px; color: #C2C2C2; margin-bottom: 10px; }
+.social-row { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+
+.footer-bottom { text-align: center; font-size: 14px; margin-top: 30px; color: #ccc; display: flex; flex-direction: column; gap: 10px;}
+
+/* --- DESKTOP MEDIA QUERY (1024px+) --- */
+@media (min-width: 1024px) {
+    .site-header { padding: 0; }
+    .nav-inner { justify-content: center; }
+    .nav-links { display: flex; }
+    .hamburger { display: none; }
+    .mobile-menu { display: none; }
+
+    /* Hero Fixes */
+    .hero-card { height: 474px; flex-direction: row; }
+    .hero-content { padding: 90px 60px 40px 60px; flex-direction: row; align-items: flex-start; }
+    .hero-left { text-align: left; }
+    .hero-title { font-size: 48px; }
+    .hero-right { justify-content: flex-end; }
+    .hero-image-frame { width: 444px; height: 444px; bottom: -20px; }
+    
+    /* Desktop Floating Cubes */
+    .hero-cube-bottom { left: 40px; bottom: -50px; width: 140px; }
+    .hero-cube-top-right { top: -80px; right: -80px; width: 300px; }
+
+    .hero-highlights { flex-direction: row; }
+    
+    /* About Desktop */
+    .about-inner { flex-direction: row; padding: 70px; }
+    .about-title { font-size: 48px; }
+    .about-cube-tr { width: 250px; top: -60px; right: -60px; }
+    .about-cube-bl { width: 220px; bottom: -50px; left: -50px; }
+
+    /* Records Pinned Logic (Standard Desktop) */
+    .records-section { height: 260vh; padding-top: 120px; padding-bottom: 120px; }
+    .records-pinned { position: sticky; top: 0; height: 100vh; flex-direction: row; justify-content: center; }
+    .records-figure { flex: 0 0 480px; transform: scale(0.85); align-items: flex-end; }
+    
+    .records-cards { position: absolute; inset: 0; pointer-events: none; display: block; }
+    
+    /* Reset Mobile Animation for Desktop */
+    .record-card { 
+        position: absolute; width: 310px; opacity: 0; transform: translateY(25px) scale(0.96); 
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .record-card:nth-child(odd), .record-card:nth-child(even) { transform: translateY(25px) scale(0.96); }
+
+    .card-top-left { top: 8%; left: 5%; }
+    .card-top-right { top: 14%; right: 5%; }
+    .card-bottom-left { bottom: 10%; left: 3%; }
+    .card-bottom-right { bottom: 5%; right: 4%; }
+    
+    .record-card.is-visible { opacity: 1; transform: translateY(0) scale(1) !important; }
+
+    /* Gallery Grid Desktop */
+    .moments-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 100%; }
+
+    /* Testimonial & Footer */
+    .testimonial { margin: 80px auto; flex-direction: row; text-align: left; padding: 40px 80px; height: 319px; }
+    .testimonial-image { width: 237px; height: 254px; margin-right: 80px; margin-bottom: 0; border-radius: 0; }
+    .testimonial-text { font-size: 34px; }
+    
+    .cta-strip { max-width: 1280px; margin: 80px auto; }
+    .cta-inner { flex-direction: row; height: 74px; align-items: center; padding: 0 48px; text-align: left; }
+    .cta-button { width: 343px; margin-left: auto; }
+
+    .footer-top { flex-direction: row; justify-content: space-between; text-align: left; }
+    .footer-heading { font-size: 35px; }
+    .footer-main { grid-template-columns: 200px 250px 200px 1fr; text-align: left; }
+    .contact-line { justify-content: flex-start; }
+    .social-row { justify-content: flex-start; }
+    .footer-bottom { flex-direction: row; justify-content: space-between; }
+}
+
+/* Hide desktop links on mobile */
+@media (max-width: 1023px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+}
+
+/* Animations */
+@keyframes cubeFloat { 0% { transform: translateY(0px); } 50% { transform: translateY(-18px); } 100% { transform: translateY(0px); } }
+</style>
+</head>
+
+<body>
+
+  <!-- HEADER (With Hamburger) -->
+  <header id="main-header" class="site-header">
+    <div class="nav-glass">
+      <!-- Desktop Nav -->
+      <nav class="nav-inner">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About Affan</a></li>
+          <li><a href="#achievements" class="nav-link">Achievements</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger Icon -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      
+      <!-- Mobile Dropdown -->
+      <div class="mobile-menu" id="mobileMenu">
+          <a href="#home" class="nav-link" onclick="toggleMenu()">Home</a>
+          <a href="#about" class="nav-link" onclick="toggleMenu()">About Affan</a>
+          <a href="#achievements" class="nav-link" onclick="toggleMenu()">Achievements</a>
+          <a href="#gallery" class="nav-link" onclick="toggleMenu()">Gallery</a>
+          <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-section">
+    <div class="hero-card">
+      <!-- Decorative Bars -->
+      <div class="hero-color-bars hero-bars-top">
+        <span class="bar bar-yellow"></span><span class="bar bar-green"></span><span class="bar bar-red"></span>
+      </div>
+
+      <!-- Top Right Big Floating Cube (IMAGE TAG) -->
+      <img src="Images/Cube.png" class="hero-cube-top-right" alt="Decorative Cube">
+
+      <div class="hero-content">
+        <div class="hero-left">
+          <h1 class="hero-title">INDIA’S LEADING<br>RUBIK’S CUBE PERFORMER</h1>
+          <p class="hero-sub">Guinness World Record holder known for transforming simple cubes into unforgettable art.</p>
+        </div>
+        <div class="hero-right">
+          <div class="hero-image-frame">
+            <img src="Images/affan-hero.png" alt="Grand Master Affan Kutty" class="hero-img">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Left Floating Cube (Corrected Position) -->
+      <img src="Images/cube.png" alt="Rubik's Cube" class="hero-cube-bottom">
+
+      <div class="hero-color-bars hero-bars-bottom">
+        <span class="bar bar-white"></span><span class="bar bar-blue"></span><span class="bar bar-orange"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="hero-highlights">
+    <div class="highlight-box">
+      <img src="icons/award.svg" alt="Award" class="highlight-icon" />
+      <p class="highlight-text">Multiple Record Titles earned through years of dedicated practice</p>
+    </div>
+    <div class="highlight-box">
+      <img src="icons/cube.svg" alt="Cube" class="highlight-icon" />
+      <p class="highlight-text">Expert in Blindfold Solving & Speed Cubing</p>
+    </div>
+    <div class="highlight-box">
+      <img src="icons/lecture.svg" alt="Lecture" class="highlight-icon" />
+      <p class="highlight-text">Conducted Workshops for 50+ Schools & Institutions</p>
+    </div>
+  </div>
+      
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="about-card">
+      <!-- Top Right Floating Image (IMAGE TAG) -->
+      <img src="Images/White Cube.png" class="about-float-img about-cube-tr" alt="Decorative Cube">
+      
+      <!-- Bottom Left Floating Image (IMAGE TAG) -->
+      <img src="Images/White Cube.png" class="about-float-img about-cube-bl" alt="Decorative Cube">
+
+      <div class="about-inner">
+        <div class="about-text">
+          <h2 class="about-title">About Grand Master<br>Affan Kutty</h2>
+          <p>From the busy lanes of Mumbra, Thane, Affan Kutty turned his passion for the classic cube into a spectacular journey of performance-art, records and inspiration.</p>
+          <p>Having completed over 1,000 cube-mosaic artworks, and honoured with titles such as “Grand Master”, his work spans from elite stage shows to creative installations.</p>
+        </div>
+        <div class="about-image">
+          <img src="Images/about-cube.png" alt="Rubik's cube illustration">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORDS SECTION -->
+  <section class="records-section" id="achievements">
+    <div class="records-pinned">
+      <div class="records-figure">
+        <img src="images/affan-limca.png" alt="Affan Limca Records" />
+      </div>
+
+      <div class="records-cards">
+        <article class="record-card card-top-left">
+          <h3>Limca Book Of Records</h3>
+          <p>Honored for setting a national-level cubing milestone.</p>
+        </article>
+        <article class="record-card card-top-right">
+          <h3>Limca Book Of Records</h3>
+          <p>Recognized for outstanding speedcubing performance.</p>
+        </article>
+        <article class="record-card card-bottom-left">
+          <h3>Limca Book Of Records</h3>
+          <p>Featured for innovative cube-mosaic artistry.</p>
+        </article>
+        <article class="record-card card-bottom-right">
+          <h3>Limca Book Of Records</h3>
+          <p>Celebrated for inspiring young cubers across the nation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+      
+  <!-- GALLERY (4 CARDS) -->
+  <section id="gallery" class="moments-section">
+    <div class="moments-header">
+      <h2 class="moments-title">MOMENTS THAT MADE THE RECORD</h2>
+      <p class="moments-subtitle">Where every captured second reflects the hard work, focus, and brilliance.</p>
+    </div>
+    <div class="moments-grid">
+      <article class="moment-card">
+        <div class="moment-frame"><div class="moment-frame-inner"><img src="Images/moment1.png" class="moment-image"></div></div>
+        <p class="moment-caption">A memorable moment that reflects honor, achievement, and dedication.</p>
+      </article>
+      <article class="moment-card">
+        <div class="moment-frame"><div class="moment-frame-inner"><img src="Images/moment2.png" class="moment-image"></div></div>
+        <p class="moment-caption">A memorable moment that reflects honor, achievement, and dedication.</p>
+      </article>
+      <article class="moment-card">
+        <div class="moment-frame"><div class="moment-frame-inner"><img src="Images/moment3.png" class="moment-image"></div></div>
+        <p class="moment-caption">A memorable moment that reflects honor, achievement, and dedication.</p>
+      </article>
+      <article class="moment-card">
+        <div class="moment-frame"><div class="moment-frame-inner"><img src="Images/moment4.png" class="moment-image"></div></div>
+        <p class="moment-caption">A memorable moment that reflects honor, achievement, and dedication.</p>
+      </article>
+    </div>
+  </section>
+      
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+      <div class="testimonial-image"><img src="Images/t1.png"></div>
+      <div class="testimonial-content">
+          <p class="testimonial-text">"Affan’s discipline, precision, and consistency at such a young age is truly commendable."</p>
+          <p class="testimonial-author">— Ameen Sarguroh</p>
+      </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+      <div class="cta-inner">
+          <p class="cta-text">Bring the Magic of Speedcubing to Your Stage</p>
+          <button class="cta-button">Request a Guest Appearance</button>
+      </div>
+  </section>
+      
+  <!-- FOOTER -->
+  <footer id="contact" class="site-footer">
+      <div class="footer-top">
+          <h2 class="footer-heading">Grand Master Affan Kutty</h2>
+          <p class="footer-tagline">India’s Leading Rubik’s Cube Performer & Mosaic Artist</p>
+      </div>
+      <div class="footer-divider"></div>
+      
+      <div class="footer-main">
+          <div class="footer-col">
+              <h3>About</h3>
+              <ul>
+                  <li>About Affan</li>
+                  <li>Achievements</li>
+                  <li>Records</li>
+                  <li>Gallery</li>
+              </ul>
+          </div>
+          <div class="footer-col">
+              <h3>Shows & Services</h3>
+              <ul>
+                  <li>Stage Performance</li>
+                  <li>Workshops</li>
+                  <li>School events</li>
+                  <li>Events</li>
+              </ul>
+          </div>
+          <div class="footer-col">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li>FAQs</li>
+                  <li>Media Kit</li>
+                  <li>Press & News</li>
+                  <li>Merch</li>
+              </ul>
+          </div>
+          <div class="footer-col footer-contact">
+              <h3>Contact</h3>
+              <div class="contact-line"><i class="fas fa-envelope"></i> <span>info@affankutty.com</span></div>
+              <div class="contact-line"><i class="fas fa-envelope"></i> <span>connect@affankutty.com</span></div>
+              <div class="contact-line"><i class="fas fa-phone"></i> <span>+91 99675 89330</span></div>
+              <div class="social-row">
+                  <img src="icons/instagram.svg" alt="IG" style="width:24px;">
+                  <img src="icons/whatsapp.svg"  alt="WA" style="width:24px;">
+                  <img src="icons/facebook.svg"  alt="FB" style="width:24px;">
+                  <img src="icons/youtube.svg"   alt="YT" style="width:24px;">
+              </div>
+          </div>
+      </div>
+      
+      <div class="footer-divider" style="margin-top: 40px;"></div>
+
+      <div class="footer-bottom">
+          <p>©2025 Grand Master Affan Kutty. All Rights Reserved</p>
+          <p>Designed and Developed by Eaz Nexora</p>
+      </div>
+  </footer>
+  
+  <!-- SCRIPTS -->
+  <script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+    }
+
+    const header = document.getElementById('main-header');
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY && currentY > 80) { header.classList.add('header-hidden'); } 
+      else { header.classList.remove('header-hidden'); }
+      lastScrollY = currentY;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const section = document.querySelector('.records-section');
+      const cards = document.querySelectorAll('.record-card');
+
+      function handleScroll() {
+        // Desktop Logic
+        if (window.innerWidth >= 1024) {
+          const viewportH = window.innerHeight;
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const scrollY = window.scrollY;
+          const progressRaw = (scrollY + viewportH / 2 - sectionTop) / (sectionHeight - viewportH);
+          const progress = Math.min(Math.max(progressRaw, 0), 1);
+          const step = 1 / (cards.length + 1); 
+
+          cards.forEach((card, idx) => {
+            const threshold = step * (idx + 1);
+            if (progress >= threshold) card.classList.add('is-visible');
+            else card.classList.remove('is-visible');
+          });
+        } 
+        // Mobile Logic (Side Animation)
+        else {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) entry.target.classList.add('mobile-visible');
+            });
+          }, { threshold: 0.15 }); // 15% visible to trigger
+          cards.forEach(card => observer.observe(card));
+        }
+      }
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+      handleScroll(); 
+    });
+  </script>
+</body>
+</html>
